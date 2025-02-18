@@ -3,6 +3,7 @@ import 'package:deepvidai/Dashboard/NavItems/discoverMusic.dart';
 import 'package:deepvidai/Dashboard/NavItems/entertainmentHub.dart';
 import 'package:deepvidai/Dashboard/NavItems/home.dart';
 import 'package:deepvidai/Dashboard/NavItems/profile.dart';
+import 'package:deepvidai/Dashboard/notifications.dart';
 import 'package:deepvidai/Utils/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
@@ -55,7 +56,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 SizedBox(width: 10),
                 IconButton(
                   icon: Icon(LucideIcons.bell, color: Colors.white),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => NotificationScreen(),
+                      ),
+                    );
+                  },
                 ),
               ],
             ),

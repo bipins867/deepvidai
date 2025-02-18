@@ -1,0 +1,2 @@
+C:/Users/bipin/OneDrive/Desktop/deepvidai - Copy/android/app/.cxx/Debug/4vg59451/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/bipin/OneDrive/Desktop/deepvidai - Copy/android/app/.cxx/Debug/4vg59451/armeabi-v7a/CMakeFiles/rebuild_cache.dir

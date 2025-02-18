@@ -1,4 +1,3 @@
-import 'package:deepvidai/Dashboard/dashboard.dart';
 import 'package:deepvidai/Utils/theme.dart';
 import 'package:deepvidai/Welcome/welcomeScreen.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +20,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
       });
     });
     Widget route = WelcomeScreen();
-    route = DashboardScreen();
+
     Future.delayed(Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,

@@ -21,18 +21,6 @@ class _DiscoverMusicScreenState extends State<DiscoverMusicScreen> {
       'url':
           'https://vibevision-bucket-pv.s3.amazonaws.com/67af3ba6769196e663305876_jukebox_1739618383112/67af3ba6769196e663305876_jukebox_1739618383112_audio_variation-1.mp3'
     },
-    {
-      'image':
-          'https://img.freepik.com/free-vector/illustration-businessman_53876-5856.jpg',
-      'title': 'Sad Piano',
-      'type': 'Piano, Sad',
-      'userPic':
-          'https://img.freepik.com/free-vector/illustration-businessman_53876-5856.jpg',
-      'username': 'Alice Smith',
-      'duration': '03:45',
-      'url':
-          'https://vibevision-bucket-pv.s3.amazonaws.com/67af3ba6769196e663305876_jukebox_1739618383112/67af3ba6769196e663305876_jukebox_1739618383112_audio_variation-1.mp3'
-    },
   ];
 
   AudioPlayer _audioPlayer = AudioPlayer();

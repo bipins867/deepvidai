@@ -12,6 +12,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFF121212),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
@@ -106,8 +107,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
               label: Text('Continue with Google'),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.white,
-                foregroundColor: Colors.black,
+                backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+                foregroundColor: const Color.fromARGB(255, 255, 255, 255),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),

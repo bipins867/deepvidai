@@ -1,5 +1,6 @@
 import 'package:deepvidai/Auth/forgotPassword.dart';
 import 'package:deepvidai/Auth/signUp.dart';
+import 'package:deepvidai/Dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -104,7 +105,13 @@ class LoginScreen extends StatelessWidget {
             ),
             SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => DashboardScreen()),
+                  (route) => false, // This removes all previous routes
+                );
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xFF0A84FF),
                 foregroundColor: Colors.white,
@@ -140,8 +147,8 @@ class LoginScreen extends StatelessWidget {
               ),
               label: Text('Continue with Google'),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.white,
-                foregroundColor: Colors.black,
+                backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+                foregroundColor: const Color.fromARGB(255, 255, 255, 255),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),

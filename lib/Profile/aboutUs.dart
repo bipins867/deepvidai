@@ -1,5 +1,6 @@
 import 'package:deepvidai/Utils/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AboutUsScreen extends StatelessWidget {
   @override
@@ -71,9 +72,11 @@ class AboutUsScreen extends StatelessWidget {
             // Add the "Explore More" button
             Center(
               child: ElevatedButton(
-                onPressed: () {
-                  // Add your navigation or action here
-                  print("Explore More button pressed!");
+                onPressed: () async {
+                  Uri url = Uri.parse('https://deepvid.ai');
+                  if (await canLaunchUrl(url)) {
+                    await launchUrl(url, mode: LaunchMode.externalApplication);
+                  }
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.deepPurple, // Button color

@@ -19,9 +19,9 @@ class _EntertainmentHubScreenState extends State<EntertainmentHubScreen> {
       'title': 'Amazing AI Generated Image',
       'type': 'image',
       'url':
-          'https://img.freepik.com/free-vector/illustration-businessman_53876-5856.jpg',
+          'https://vibevision-bucket-pv.s3.amazonaws.com/67b02cff769196e663305cc7_imagecraft_1739711503347/67b02cff769196e663305cc7_imagecraft_1739711503347_image_variation-1.png',
       'image':
-          'https://img.freepik.com/free-vector/illustration-businessman_53876-5856.jpg', // Add image URL for videos
+          'https://vibevision-bucket-pv.s3.amazonaws.com/67b02cff769196e663305cc7_imagecraft_1739711503347/67b02cff769196e663305cc7_imagecraft_1739711503347_image_variation-1.png', // Add image URL for videos
     },
     {
       'profilePic':
@@ -207,6 +207,17 @@ class _ContentCardState extends State<ContentCard>
               ),
             ),
             SizedBox(height: 10),
+
+            // Image Content
+            if (widget.content['type'] == 'image')
+              Image.network(
+                widget.content['url'],
+                fit: BoxFit.cover,
+                width: double.infinity,
+                height: 200, // Fixed height for consistency
+              ),
+
+            // Video Content
             if (widget.content['type'] == 'video' && _videoController != null)
               AspectRatio(
                 aspectRatio: _videoController!.value.aspectRatio,
@@ -222,6 +233,8 @@ class _ContentCardState extends State<ContentCard>
                   ],
                 ),
               ),
+
+            // Music Content
             if (widget.content['type'] == 'music')
               Container(
                 height: 150, // Increased size for the rotating image
@@ -238,40 +251,49 @@ class _ContentCardState extends State<ContentCard>
                   ),
                 ),
               ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                IconButton(
-                  icon: Icon(isPlaying ? Icons.pause : Icons.play_arrow,
-                      color: Colors.white),
-                  onPressed: _togglePlayPause,
-                ),
-                Text(
-                  _formatDuration(_position),
-                  style: TextStyle(color: Colors.white),
-                ),
-                Text(
-                  _formatDuration(_duration),
-                  style: TextStyle(color: Colors.white),
-                ),
-              ],
-            ),
-            Slider(
-              value: _position.inSeconds.toDouble(),
-              min: 0.0,
-              max: _duration.inSeconds.toDouble(),
-              onChanged: (double value) {
-                setState(() {
-                  if (widget.content['type'] == 'video' &&
-                      _videoController != null) {
-                    _videoController!.seekTo(Duration(seconds: value.toInt()));
-                  } else if (widget.content['type'] == 'music' &&
-                      _audioPlayer != null) {
-                    _audioPlayer!.seek(Duration(seconds: value.toInt()));
-                  }
-                });
-              },
-            ),
+
+            // Play/Pause and Duration UI for Video/Music
+            if (widget.content['type'] == 'video' ||
+                widget.content['type'] == 'music')
+              Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                        icon: Icon(isPlaying ? Icons.pause : Icons.play_arrow,
+                            color: Colors.white),
+                        onPressed: _togglePlayPause,
+                      ),
+                      Text(
+                        _formatDuration(_position),
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      Text(
+                        _formatDuration(_duration),
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ],
+                  ),
+                  Slider(
+                    value: _position.inSeconds.toDouble(),
+                    min: 0.0,
+                    max: _duration.inSeconds.toDouble(),
+                    onChanged: (double value) {
+                      setState(() {
+                        if (widget.content['type'] == 'video' &&
+                            _videoController != null) {
+                          _videoController!
+                              .seekTo(Duration(seconds: value.toInt()));
+                        } else if (widget.content['type'] == 'music' &&
+                            _audioPlayer != null) {
+                          _audioPlayer!.seek(Duration(seconds: value.toInt()));
+                        }
+                      });
+                    },
+                  ),
+                ],
+              ),
           ],
         ),
       ),
